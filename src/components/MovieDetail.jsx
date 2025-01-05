@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Card, Container } from 'react-bootstrap';
+import { Card, Container, Row, Col } from 'react-bootstrap';
 
 function MovieDetail() {
   const { imdbID } = useParams();
@@ -21,25 +21,35 @@ function MovieDetail() {
     <Container>
       {movie ? (
         <Card>
-          <Card.Img variant="top" src={movie.Poster !== 'N/A' ? movie.Poster : 'https://via.placeholder.com/150'} />
-          <Card.Body>
-            <Card.Title>{movie.Title}</Card.Title>
-            <Card.Text>
-              <strong>Año:</strong> {movie.Year}
-            </Card.Text>
-            <Card.Text>
-              <strong>Género:</strong> {movie.Genre}
-            </Card.Text>
-            <Card.Text>
-              <strong>Director:</strong> {movie.Director}
-            </Card.Text>
-            <Card.Text>
-              <strong>Actores:</strong> {movie.Actors}
-            </Card.Text>
-            <Card.Text>
-              <strong>Sinopsis:</strong> {movie.Plot}
-            </Card.Text>
-          </Card.Body>
+          <Row noGutters>
+            <Col md={4}>
+              <Card.Img 
+                variant="top" 
+                src={movie.Poster !== 'N/A' ? movie.Poster : 'https://via.placeholder.com/150'} 
+                style={{ width: '100%', height: 'auto' }}
+              />
+            </Col>
+            <Col md={8}>
+              <Card.Body>
+                <Card.Title>{movie.Title}</Card.Title>
+                <Card.Text>
+                  <strong>Año:</strong> {movie.Year}
+                </Card.Text>
+                <Card.Text>
+                  <strong>Género:</strong> {movie.Genre}
+                </Card.Text>
+                <Card.Text>
+                  <strong>Director:</strong> {movie.Director}
+                </Card.Text>
+                <Card.Text>
+                  <strong>Actores:</strong> {movie.Actors}
+                </Card.Text>
+                <Card.Text>
+                  <strong>Sinopsis:</strong> {movie.Plot}
+                </Card.Text>
+              </Card.Body>
+            </Col>
+          </Row>
         </Card>
       ) : (
         <p>Cargando...</p>

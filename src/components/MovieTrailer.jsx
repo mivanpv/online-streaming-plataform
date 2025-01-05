@@ -8,7 +8,7 @@ function MovieTrailer() {
   useEffect(() => {
     const fetchTrailer = async () => {
       const apiKey = 'AIzaSyCpv-NNQ7TnbCP6HPqRjrB04MultQLo7fo'; // Reemplaza con tu clave API de YouTube
-      const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${imdbID}+trailer&type=video&key=${apiKey}`);
+      const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${imdbID}+trailer+en+español&type=video&key=${apiKey}`);
       const data = await response.json();
       if (data.items && data.items.length > 0) {
         setTrailerUrl(`https://www.youtube.com/embed/${data.items[0].id.videoId}`);
