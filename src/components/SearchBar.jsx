@@ -25,7 +25,7 @@ function SearchBar() {
         </Button>
       </Form>
       <div className="ml-3">
-        Resultado de la busqueda: {search}
+        Resultado de la busqueda TEST: {search}
       </div>
     </div>
   );
