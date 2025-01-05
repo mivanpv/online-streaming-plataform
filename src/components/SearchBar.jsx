@@ -13,7 +13,7 @@ function SearchBar() {
 
   const searchMovies = async () => {
     const apiKey = '593d9c0b'; // Reemplaza con tu clave API de OMDb
-    const response = await fetch(`http://www.omdbapi.com/?s=${search}&apikey=${apiKey}`);
+    const response = await fetch(`https://www.omdbapi.com/?s=${search}&apikey=${apiKey}`);
     const data = await response.json();
     setResults(data.Search || []);
   };
