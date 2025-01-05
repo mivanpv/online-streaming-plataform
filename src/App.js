@@ -8,6 +8,8 @@ import ShoppingCart from './components/ShoppingCart';
 import Footer from './components/Footer';
 import WelcomeScreen from './components/WelcomeScreen';
 import NotFound from './components/NotFound';
+import MovieTrailer from './components/MovieTrailer';
+import MovieDetail from './components/MovieDetail';
 
 function App() {
   const [sidebarVisible, setSidebarVisible] = useState(true);
@@ -29,6 +31,8 @@ function App() {
             <Route path="/" element={<WelcomeScreen />} />
             <Route path="/buscar-peliculas" element={<SearchBar />} />
             <Route path="/carrito-de-compras" element={<ShoppingCart />} />
+            <Route path="/trailer/:imdbID" element={<MovieTrailer />} />
+            <Route path="/detalle/:imdbID" element={<MovieDetail />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 function MovieCard({ movie }) {
   return (
@@ -10,6 +11,12 @@ function MovieCard({ movie }) {
         <Card.Text>
           {movie.Year}
         </Card.Text>
+        <Button variant="primary" as={Link} to={`/trailer/${movie.imdbID}`}>
+          Ver Tráiler
+        </Button>
+        <Button variant="secondary" as={Link} to={`/detalle/${movie.imdbID}`} style={{ marginLeft: '10px' }}>
+          Ver Detalle
+        </Button>
       </Card.Body>
     </Card>
   );
