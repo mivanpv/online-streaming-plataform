@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import SearchBar from './components/SearchBar';
@@ -6,22 +6,30 @@ import SidebarMenu from './components/SidebarMenu';
 import Header from './components/Header';
 import ShoppingCart from './components/ShoppingCart';
 import Footer from './components/Footer';
+import WelcomeScreen from './components/WelcomeScreen';
+import NotFound from './components/NotFound';
 
 function App() {
+  const [sidebarVisible, setSidebarVisible] = useState(true);
+
+  const toggleSidebar = () => {
+    setSidebarVisible(!sidebarVisible);
+  };
+
   return (
     <Router>
       <div className="App">
         <Header />
-        <SidebarMenu />
-        <div className="content" style={{ marginLeft: '250px', padding: '20px' }}>
+        <button onClick={toggleSidebar} className="toggle-sidebar-btn">
+          {sidebarVisible ? 'Ocultar' : 'Mostrar'} Menú
+        </button>
+        {sidebarVisible && <SidebarMenu />}
+        <div className="content" style={{ marginLeft: sidebarVisible ? '250px' : '0', padding: '20px' }}>
           <Routes>
+            <Route path="/" element={<WelcomeScreen />} />
+            <Route path="/buscar-peliculas" element={<SearchBar />} />
             <Route path="/carrito-de-compras" element={<ShoppingCart />} />
-            <Route path="/" element={
-              <header className="App-header">
-                <h1>Buscar peliculas</h1>
-                <SearchBar />
-              </header>
-            } />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
         <Footer />

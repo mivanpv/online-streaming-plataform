@@ -11,6 +11,7 @@ function SearchBar() {
 
   return (
     <div>
+      <h2>Busqueda de pelicula</h2>
       <Form className="d-flex align-items-center mb-3">
         <FormControl
           type="search"
