@@ -7,13 +7,25 @@ import { ShoppingCartContext } from '../context/ShoppingCartProvider';
 function SearchBar() {
   const [search, setSearch] = useState('');
   const [results, setResults] = useState([]);
-  const { rentMovie, buyMovie } = useContext(ShoppingCartContext);
+  const { rentedMovies, boughtMovies, rentMovie, buyMovie } = useContext(ShoppingCartContext);
 
   const textchange = (e) => {
     setSearch(e.target.value);
   };
 
+  const validateInput = (input) => {
+    // Validar que la entrada no esté vacía y no contenga caracteres especiales peligrosos
+    const regex = /^[a-zA-Z0-9\sñÑáéíóúÁÉÍÓÚ]+$/;
+    return regex.test(input);
+  };
+
   const searchMovies = async () => {
+
+    if (!validateInput(search)) {
+      alert('Entrada inválida. Por favor, ingrese solo letras y números.');
+      return;
+    }
+
     const apiKey = '593d9c0b'; // Reemplaza con tu clave API de OMDb
     const response = await fetch(`https://www.omdbapi.com/?s=${search}&apikey=${apiKey}`);
     const data = await response.json();
@@ -40,7 +52,13 @@ function SearchBar() {
         {results.length > 0 ? (
           results.map((movie) => (
             <Col key={movie.imdbID} md={4}>
-              <MovieCard movie={movie} onRent={rentMovie} onBuy={buyMovie} showActions={true}/>
+              <MovieCard 
+                movie={movie} 
+                onRent={rentMovie} 
+                onBuy={buyMovie} 
+                rentedMovies={rentedMovies} 
+                boughtMovies={boughtMovies} 
+              />
             </Col>
           ))
         ) : (

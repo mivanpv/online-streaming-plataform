@@ -5,7 +5,7 @@ import { ShoppingCartContext } from '../context/ShoppingCartProvider';
 
 function WelcomeScreen() {
   const [popularMovies, setPopularMovies] = useState([]);
-  const { rentMovie, buyMovie } = useContext(ShoppingCartContext);
+  const { rentedMovies, boughtMovies, rentMovie, buyMovie } = useContext(ShoppingCartContext);
 
   useEffect(() => {
     const fetchPopularMovies = async () => {
@@ -40,7 +40,13 @@ function WelcomeScreen() {
         {popularMovies.length > 0 ? (
           popularMovies.map((movie) => (
             <Col key={movie.imdbID} md={4}>
-              <MovieCard movie={movie} onRent={rentMovie} onBuy={buyMovie} />
+              <MovieCard 
+                movie={movie} 
+                onRent={rentMovie} 
+                onBuy={buyMovie} 
+                rentedMovies={rentedMovies} 
+                boughtMovies={boughtMovies} 
+              />
             </Col>
           ))
         ) : (

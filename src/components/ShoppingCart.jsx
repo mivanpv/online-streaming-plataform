@@ -4,7 +4,7 @@ import { Row, Col, Button } from 'react-bootstrap';
 import MovieCard from './MovieCard';
 
 function ShoppingCart() {
-  const { rentedMovies, boughtMovies, removeRentedMovie, removeBoughtMovie } = useContext(ShoppingCartContext);
+  const { rentedMovies, boughtMovies, removeRentedMovie, removeBoughtMovie, rentMovie, buyMovie  } = useContext(ShoppingCartContext);
 
   return (
     <div>
@@ -14,7 +14,14 @@ function ShoppingCart() {
         {rentedMovies.length > 0 ? (
           rentedMovies.map((movie) => (
             <Col key={movie.imdbID} md={4}>
-              <MovieCard movie={movie} showActions={false} />
+              <MovieCard 
+                movie={movie} 
+                onRent={rentMovie} 
+                onBuy={buyMovie} 
+                showActions={true} 
+                rentedMovies={rentedMovies} 
+                boughtMovies={boughtMovies} 
+              />
               <Button variant="danger" onClick={() => removeRentedMovie(movie.imdbID)}>Eliminar</Button>
             </Col>
           ))
@@ -27,7 +34,14 @@ function ShoppingCart() {
         {boughtMovies.length > 0 ? (
           boughtMovies.map((movie) => (
             <Col key={movie.imdbID} md={4}>
-              <MovieCard movie={movie} showActions={false} />
+              <MovieCard 
+                movie={movie} 
+                onRent={rentMovie} 
+                onBuy={buyMovie} 
+                showActions={true} 
+                rentedMovies={rentedMovies} 
+                boughtMovies={boughtMovies} 
+              />
               <Button variant="danger" onClick={() => removeBoughtMovie(movie.imdbID)}>Eliminar</Button>
             </Col>
           ))
