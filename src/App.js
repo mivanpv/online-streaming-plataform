@@ -10,6 +10,7 @@ import WelcomeScreen from './components/WelcomeScreen';
 import NotFound from './components/NotFound';
 import MovieTrailer from './components/MovieTrailer';
 import MovieDetail from './components/MovieDetail';
+import { ShoppingCartProvider } from './context/ShoppingCartProvider';
 
 function App() {
   const [sidebarVisible, setSidebarVisible] = useState(true);
@@ -19,26 +20,28 @@ function App() {
   };
 
   return (
-    <Router>
-      <div className="App">
-        <Header />
-        <button onClick={toggleSidebar} className="toggle-sidebar-btn">
-          {sidebarVisible ? 'Ocultar' : 'Mostrar'} Menú
-        </button>
-        {sidebarVisible && <SidebarMenu />}
-        <div className="content" style={{ marginLeft: sidebarVisible ? '250px' : '0', padding: '20px' }}>
-          <Routes>
-            <Route path="/" element={<WelcomeScreen />} />
-            <Route path="/buscar-peliculas" element={<SearchBar />} />
-            <Route path="/carrito-de-compras" element={<ShoppingCart />} />
-            <Route path="/trailer/:imdbID" element={<MovieTrailer />} />
-            <Route path="/detalle/:imdbID" element={<MovieDetail />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+    <ShoppingCartProvider>
+      <Router>
+        <div className="App">
+          <Header />
+          <button onClick={toggleSidebar} className="toggle-sidebar-btn">
+            {sidebarVisible ? 'Ocultar' : 'Mostrar'} Menú
+          </button>
+          {sidebarVisible && <SidebarMenu />}
+          <div className="content" style={{ marginLeft: sidebarVisible ? '250px' : '0', padding: '20px' }}>
+            <Routes>
+              <Route path="/" element={<WelcomeScreen />} />
+              <Route path="/buscar-peliculas" element={<SearchBar />} />
+              <Route path="/carrito-de-compras" element={<ShoppingCart />} />
+              <Route path="/trailer/:imdbID" element={<MovieTrailer />} />
+              <Route path="/detalle/:imdbID" element={<MovieDetail />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
-    </Router>
+      </Router>
+    </ShoppingCartProvider>
   );
 }
 

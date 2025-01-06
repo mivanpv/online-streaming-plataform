@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
-import { Form, FormControl, Button, Row } from 'react-bootstrap';
+import React, { useState, useContext } from 'react';
+import { Form, FormControl, Button, Row, Col } from 'react-bootstrap';
 import { FaSearch } from 'react-icons/fa';
 import MovieCard from './MovieCard';
+import { ShoppingCartContext } from '../context/ShoppingCartProvider';
 
 function SearchBar() {
   const [search, setSearch] = useState('');
   const [results, setResults] = useState([]);
+  const { rentMovie, buyMovie } = useContext(ShoppingCartContext);
 
   const textchange = (e) => {
     setSearch(e.target.value);
@@ -37,7 +39,9 @@ function SearchBar() {
       <Row>
         {results.length > 0 ? (
           results.map((movie) => (
-            <MovieCard key={movie.imdbID} movie={movie} />
+            <Col key={movie.imdbID} md={4}>
+              <MovieCard movie={movie} onRent={rentMovie} onBuy={buyMovie} showActions={true}/>
+            </Col>
           ))
         ) : (
           <p>No se encontraron resultados</p>
