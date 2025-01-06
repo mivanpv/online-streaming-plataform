@@ -11,6 +11,7 @@ import NotFound from './components/NotFound';
 import MovieTrailer from './components/MovieTrailer';
 import MovieDetail from './components/MovieDetail';
 import { ShoppingCartProvider } from './context/ShoppingCartProvider';
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 function App() {
   const [sidebarVisible, setSidebarVisible] = useState(true);
