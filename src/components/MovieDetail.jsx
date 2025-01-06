@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { Card, Container, Row, Col } from 'react-bootstrap';
+import { ShoppingCartContext } from '../context/ShoppingCartProvider';
+import ActionButtons from './ActionButtons';
 
 function MovieDetail() {
   const { imdbID } = useParams();
   const [movie, setMovie] = useState(null);
+  const { rentedMovies, boughtMovies, rentMovie, buyMovie } = useContext(ShoppingCartContext);
 
   useEffect(() => {
     const fetchMovie = async () => {
-      const apiKey = '593d9c0b'; // Reemplaza con tu clave API de OMDb
+      const apiKey = process.env.REACT_APP_OMDB_API_KEY; // Reemplaza con tu clave API de OMDb
       const response = await fetch(`https://www.omdbapi.com/?i=${imdbID}&apikey=${apiKey}`);
       const data = await response.json();
       setMovie(data);
@@ -16,6 +19,9 @@ function MovieDetail() {
 
     fetchMovie();
   }, [imdbID]);
+
+  const isRented = rentedMovies.some(m => m.imdbID === imdbID);
+  const isBought = boughtMovies.some(m => m.imdbID === imdbID);
 
   return (
     <Container>
@@ -47,6 +53,13 @@ function MovieDetail() {
                 <Card.Text>
                   <strong>Sinopsis:</strong> {movie.Plot}
                 </Card.Text>
+                <ActionButtons 
+                  movie={movie} 
+                  onRent={rentMovie} 
+                  onBuy={buyMovie} 
+                  isRented={isRented} 
+                  isBought={isBought} 
+                />
               </Card.Body>
             </Col>
           </Row>

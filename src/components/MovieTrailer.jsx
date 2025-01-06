@@ -1,13 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import { Container, Card } from 'react-bootstrap';
+import { ShoppingCartContext } from '../context/ShoppingCartProvider';
+import ActionButtons from './ActionButtons';
 
 function MovieTrailer() {
   const { imdbID } = useParams();
   const [trailerUrl, setTrailerUrl] = useState('');
+  const [movie, setMovie] = useState(null);
+  const { rentedMovies, boughtMovies, rentMovie, buyMovie } = useContext(ShoppingCartContext);
 
   useEffect(() => {
     const fetchTrailer = async () => {
-      const apiKey = 'AIzaSyCpv-NNQ7TnbCP6HPqRjrB04MultQLo7fo'; // Reemplaza con tu clave API de YouTube
+      const apiKey = process.env.REACT_APP_YOUTUBE_API_KEY; // Reemplaza con tu clave API de YouTube
       const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${imdbID}+trailer&type=video&key=${apiKey}`);
       const data = await response.json();
       if (data.items && data.items.length > 0) {
@@ -15,11 +20,22 @@ function MovieTrailer() {
       }
     };
 
+    const fetchMovie = async () => {
+      const apiKey = process.env.REACT_APP_OMDB_API_KEY; // Reemplaza con tu clave API de OMDb
+      const response = await fetch(`https://www.omdbapi.com/?i=${imdbID}&apikey=${apiKey}`);
+      const data = await response.json();
+      setMovie(data);
+    };
+
     fetchTrailer();
+    fetchMovie();
   }, [imdbID]);
 
+  const isRented = rentedMovies.some(m => m.imdbID === imdbID);
+  const isBought = boughtMovies.some(m => m.imdbID === imdbID);
+
   return (
-    <div>
+    <Container>
       <h2>Tráiler de la Película</h2>
       {trailerUrl ? (
         <iframe
@@ -33,7 +49,36 @@ function MovieTrailer() {
       ) : (
         <p>Cargando tráiler...</p>
       )}
-    </div>
+      {movie && (
+        <Card>
+          <Card.Body>
+            <Card.Title>{movie.Title}</Card.Title>
+            <Card.Text>
+              <strong>Año:</strong> {movie.Year}
+            </Card.Text>
+            <Card.Text>
+              <strong>Género:</strong> {movie.Genre}
+            </Card.Text>
+            <Card.Text>
+              <strong>Director:</strong> {movie.Director}
+            </Card.Text>
+            <Card.Text>
+              <strong>Actores:</strong> {movie.Actors}
+            </Card.Text>
+            <Card.Text>
+              <strong>Sinopsis:</strong> {movie.Plot}
+            </Card.Text>
+            <ActionButtons 
+              movie={movie} 
+              onRent={rentMovie} 
+              onBuy={buyMovie} 
+              isRented={isRented} 
+              isBought={isBought} 
+            />
+          </Card.Body>
+        </Card>
+      )}
+    </Container>
   );
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Button, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { FaDollarSign, FaRegCalendarAlt } from 'react-icons/fa';
+import ActionButtons from './ActionButtons';
 
 function MovieCard({ movie, onRent, onBuy, rentedMovies, boughtMovies, showActions = true }) {
   const isRented = rentedMovies.some(m => m.imdbID === movie.imdbID);
@@ -15,18 +15,13 @@ function MovieCard({ movie, onRent, onBuy, rentedMovies, boughtMovies, showActio
         <Card.Text>
           {movie.Year}
           {showActions && (
-              <>
-                <FaRegCalendarAlt 
-                  style={{ cursor: 'pointer', marginLeft: '20px',marginRight: '10px', color: isRented ? 'green' : 'black' }} 
-                  onClick={() => onRent(movie)} 
-                  title="Alquilar"
-                />
-                <FaDollarSign 
-                  style={{ cursor: 'pointer' , color: isBought ? 'green' : 'black'}} 
-                  onClick={() => onBuy(movie)} 
-                  title="Comprar"
-                />
-              </>
+              <ActionButtons 
+              movie={movie} 
+              onRent={onRent} 
+              onBuy={onBuy} 
+              isRented={isRented} 
+              isBought={isBought} 
+            />
             )}
         </Card.Text>
 
