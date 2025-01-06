@@ -40,6 +40,7 @@ function App() {
             </Routes>
           </div>
           <Footer />
+          <SpeedInsights />
         </div>
       </Router>
     </ShoppingCartProvider>
