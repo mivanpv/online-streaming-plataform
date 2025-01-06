@@ -30,6 +30,7 @@ function WelcomeScreen() {
       setPopularMovies(movies);
     };
 
+    
     fetchPopularMovies();
   }, []);
 
