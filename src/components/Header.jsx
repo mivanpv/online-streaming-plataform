@@ -5,7 +5,7 @@ function Header() {
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href="#home">Online Streaming Platform</Navbar.Brand>
+        <Navbar.Brand href="/">Online Streaming Platform</Navbar.Brand>
       </Container>
     </Navbar>
   );
