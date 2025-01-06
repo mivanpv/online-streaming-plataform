@@ -26,8 +26,8 @@ function SearchBar() {
       return;
     }
 
-    const apiKey = '593d9c0b'; // Reemplaza con tu clave API de OMDb
-    const response = await fetch(`https://www.omdbapi.com/?s=${search}&apikey=${apiKey}`);
+    const omdbApiKey = process.env.REACT_APP_OMDB_API_KEY; // Reemplaza con tu clave API de OMDb
+    const response = await fetch(`https://www.omdbapi.com/?s=${search}&apikey=${omdbApiKey}`);
     const data = await response.json();
     setResults(data.Search || []);
   };

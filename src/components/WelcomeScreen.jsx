@@ -9,8 +9,8 @@ function WelcomeScreen() {
 
   useEffect(() => {
     const fetchPopularMovies = async () => {
-      const tmdbApiKey = '724d0a596d2af77b4e2d7574d600067c'; // Reemplaza con tu clave API de TMDb
-      const omdbApiKey = '593d9c0b'; // Reemplaza con tu clave API de OMDb
+      const tmdbApiKey = process.env.REACT_APP_TMDB_API_KEY; // Reemplaza con tu clave API de TMDb
+      const omdbApiKey = process.env.REACT_APP_OMDB_API_KEY; // Reemplaza con tu clave API de OMDb
 
       // Obtener películas populares de TMDb
       const tmdbResponse = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${tmdbApiKey}&language=es-ES&page=1`);
