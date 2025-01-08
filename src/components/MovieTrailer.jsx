@@ -1,27 +1,14 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Card } from 'react-bootstrap';
 import { ShoppingCartContext } from '../context/ShoppingCartProvider';
 import ActionButtons from './ActionButtons';
-import { fetchMovieTrailer, fetchMovieDetails } from '../services/movieService';
+import useMovieData from '../hooks/useMovieData';
 
 function MovieTrailer() {
   const { imdbID } = useParams();
-  const [trailerUrl, setTrailerUrl] = useState('');
-  const [movie, setMovie] = useState(null);
+  const { trailerUrl, movie } = useMovieData(imdbID);
   const { rentedMovies, boughtMovies, rentMovie, buyMovie } = useContext(ShoppingCartContext);
-
-  useEffect(() => {
-    const getMovieData = async () => {
-      const trailer = await fetchMovieTrailer(imdbID);
-      setTrailerUrl(trailer);
-
-      const movieDetails = await fetchMovieDetails(imdbID);
-      setMovie(movieDetails);
-    };
-
-    getMovieData();
-  }, [imdbID]);
 
   const isRented = rentedMovies.some(m => m.imdbID === imdbID);
   const isBought = boughtMovies.some(m => m.imdbID === imdbID);
