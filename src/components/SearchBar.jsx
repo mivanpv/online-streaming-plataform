@@ -1,3 +1,13 @@
+// Descripción: Este componente se encarga de mostrar un formulario de búsqueda de películas y de mostrar los resultados de la búsqueda.
+// Dependencias: React, react-bootstrap
+// Variables:
+//    - search: string que almacena el valor del campo de búsqueda.
+//    - results: array que almacena los resultados de la búsqueda.
+// Resultado: Renderiza un formulario de búsqueda de películas y muestra los resultados de la búsqueda en tarjetas.
+// ==============================================================================================
+// Ejemplo de uso: <SearchBar />
+// ==============================================================================================
+
 import React, { useState, useContext } from 'react';
 import { Form, FormControl, Button, Row, Col } from 'react-bootstrap';
 import { FaSearch } from 'react-icons/fa';

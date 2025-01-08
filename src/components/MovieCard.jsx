@@ -1,3 +1,16 @@
+// Descripcion: Componente que renderiza una tarjeta con la información de una película.
+// Dependencias: React, react-bootstrap
+// Variables:
+//    - movie: objeto con la información de la película.
+//    - onRent: función que se ejecuta al hacer clic en el botón de alquilar.
+//    - onBuy: función que se ejecuta al hacer clic en el botón de comprar.
+//    - rentedMovies: array con las películas alquiladas.
+//    - boughtMovies: array con las películas compradas
+//    - showActions: booleano que indica si se deben mostrar los botones de alquilar y comprar.
+// Resultado: Renderiza una tarjeta con la información de la película, incluyendo los botones de alquilar y comprar.
+// Ejemplo de uso: <MovieCard movie={movie} onRent={rentMovie} onBuy={buyMovie} rentedMovies={rentedMovies} boughtMovies={boughtMovies} showActions={true} />
+// ==============================================================================================
+
 import React from 'react';
 import { Card, Button, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';

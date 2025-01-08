@@ -1,3 +1,11 @@
+// Descripcion: Componente que renderiza la página de detalle de una película.
+// Dependencias: React, react-bootstrap, react-router-dom, context/ShoppingCartProvider, services/movieService, components/ActionButtons
+// Variables: 
+//    - imdbID: ID de la película a mostrar.
+// Resultado: Renderiza la información detallada de una película, incluyendo su título, año, género, director, actores, sinopsis y botones de alquilar y comprar.
+// ==============================================================================================
+// Ejemplo de uso: <MovieDetail />
+// ==============================================================================================
 import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { Card, Container, Row, Col } from 'react-bootstrap';

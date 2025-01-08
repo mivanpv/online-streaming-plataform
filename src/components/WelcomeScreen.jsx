@@ -1,3 +1,12 @@
+// Descripción: Este componente se encarga de mostrar las películas populares y de permitir alquilar o comprar una película.
+// Dependencias: React, react-bootstrap, context/ShoppingCartProvider, services/movieService
+// Variables:
+//    - popularMovies: array con las películas populares.
+// Resultado: Renderiza las películas populares con la opción de alquilar o comprar una película.
+// ==============================================================================================
+// Ejemplo de uso: <WelcomeScreen />
+// ==============================================================================================
+
 import React, { useEffect, useState, useContext } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import MovieCard from './MovieCard';

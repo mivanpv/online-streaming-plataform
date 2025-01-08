@@ -1,3 +1,14 @@
+// Descripción: Componente que renderiza el menú lateral de la aplicación.
+// Dependencias: React, react-bootstrap, react-icons
+// Resultado: Renderiza un menú lateral con enlaces a las diferentes secciones de la aplicación.
+// ==============================================================================================
+// NOTA: Este componente es una versión
+// simplificada del menú lateral.
+// Se pueden agregar más elementos y estilos según las necesidades del proyecto.
+// ==============================================================================================
+// Ejemplo de uso: <SidebarMenu />
+// ==============================================================================================
+
 import React from 'react';
 import { ListGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';

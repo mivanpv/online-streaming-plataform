@@ -1,3 +1,13 @@
+// Descripcion: Componente que renderiza el pie de página.
+// Dependencias: React, react-bootstrap
+// Resultado: Renderiza el pie de página con el año actual y el mensaje de derechos reservados.
+// ==============================================================================================
+// NOTA: Este componente es una versión simplificada del pie de página.
+// Se pueden agregar más elementos y estilos según las necesidades del proyecto.
+// ==============================================================================================
+// Ejemplo de uso: <Footer />
+// ==============================================================================================
+
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 

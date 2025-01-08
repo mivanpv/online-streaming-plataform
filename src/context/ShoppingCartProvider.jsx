@@ -1,3 +1,8 @@
+// Este archivo contiene el contexto y el provider para el carrito de compras. 
+// El contexto ShoppingCartContext contiene los estados y funciones necesarios para manejar las películas rentadas y compradas.
+// El provider ShoppingCartProvider envuelve la aplicación y provee el contexto a todos los componentes que lo necesiten.
+// Para usar el contexto en un componente, se importa el contexto y se utiliza el hook useContext para acceder a los valores del contexto.
+
 import React, { createContext, useState } from 'react';
 
 export const ShoppingCartContext = createContext();

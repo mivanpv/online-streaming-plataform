@@ -1,3 +1,13 @@
+// Este archivo contiene funciones para obtener datos de películas de TMDb y OMDb
+// y para buscar películas por título en OMDb.
+// Las funciones fetchPopularMovies, fetchMovieDetails y fetchMovieTrailer se utilizan
+// para obtener información sobre películas populares, detalles de películas y tráilers de películas, respectivamente.
+// La función searchMovies se utiliza para buscar películas por título.
+// Las claves de API de TMDb, OMDb y YouTube se almacenan en variables de entorno.
+// Para obtener una clave de API de TMDb, regístrate en https://www.themoviedb.org/.
+// Para obtener una clave de API de OMDb, regístrate en http://www.omdbapi.com/.
+// Para obtener una clave de API de YouTube, sigue las instrucciones en https://developers.google.com/youtube/v3/getting-started.
+
 const tmdbApiKey = process.env.REACT_APP_TMDB_API_KEY; // Reemplaza con tu clave API de TMDb
 const omdbApiKey = process.env.REACT_APP_OMDB_API_KEY; // Reemplaza con tu clave API de OMDb
 const youtubeApiKey = process.env.REACT_APP_YOUTUBE_API_KEY; // Reemplaza con tu clave API de YouTube

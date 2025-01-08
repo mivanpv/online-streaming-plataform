@@ -1,3 +1,14 @@
+// Descripción: Archivo principal de la aplicación, contiene la estructura de la aplicación y las rutas de la misma.
+// Dependencias: React, react-router-dom, context/ShoppingCartProvider, components/SearchBar, components/SidebarMenu, components/Header, components/ShoppingCart, components/Footer, components/WelcomeScreen, components/NotFound, components/MovieTrailer, components/MovieDetail
+// Variables:
+//    - sidebarVisible: estado para mostrar u ocultar el menú lateral.
+// Resultado: Renderiza la estructura de la aplicación con las rutas y los componentes necesarios.
+// ==============================================================================================
+// NOTA: Se puede agregar más rutas y componentes según las necesidades del proyecto.
+// ==============================================================================================
+// Ejemplo de uso: <App />
+// ==============================================================================================
+
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';

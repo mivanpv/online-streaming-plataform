@@ -1,3 +1,13 @@
+// Descripcion: Componente que renderiza las estadísticas de alquiler y compra de películas.
+// Dependencias: React, react-icons
+// Variables:
+//    - rentedMovies: array con las películas alquiladas.
+//    - boughtMovies: array con las películas compradas
+// Resultado: Renderiza las estadísticas de alquiler y compra de películas con los íconos correspondientes.
+// Importante: Se debe importar el contexto ShoppingCartContext de '../context/ShoppingCartProvider'.
+// Ejemplo de uso: <MovieStats />
+// ==============================================================================================
+
 import React, { useContext } from 'react';
 import { FaDollarSign, FaRegCalendarAlt } from 'react-icons/fa';
 import { ShoppingCartContext } from '../context/ShoppingCartProvider';

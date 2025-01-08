@@ -1,3 +1,13 @@
+// Descripcion: Componente que renderiza el encabezado de la aplicación.
+// Dependencias: React, react-bootstrap
+// Resultado: Renderiza el encabezado con el nombre de la aplicación y el componente MovieStats.
+// ==============================================================================================
+// NOTA: Este componente es una versión simplificada del encabezado.
+// Se pueden agregar más elementos y estilos según las necesidades del proyecto.
+// ==============================================================================================
+// Ejemplo de uso: <Header />
+// ==============================================================================================
+
 import React from 'react';
 import { Navbar, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';

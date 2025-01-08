@@ -1,3 +1,11 @@
+// Descripcion: Componente que renderiza el tráiler de una película.
+// Dependencias: React, react-bootstrap, react-router-dom
+// Variables:
+//    - imdbID: ID de IMDb de la película.
+// Resultado: Renderiza el tráiler de la película y la información de la misma.
+// ==============================================================================================
+// Ejemplo de uso: <MovieTrailer />
+// ==============================================================================================
 import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Card } from 'react-bootstrap';

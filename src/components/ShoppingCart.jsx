@@ -1,3 +1,17 @@
+// Descripción: Componente que renderiza el carrito de compras con las películas alquiladas y compradas.
+// Dependencias: React, react-bootstrap
+// Variables:
+//    - rentedMovies: array con las películas alquiladas.
+//    - boughtMovies: array con las películas compradas
+//    - removeRentedMovie: función para eliminar una película alquilada.
+//    - removeBoughtMovie: función para eliminar una película comprada.
+//    - rentMovie: función para alquilar una película.
+//    - buyMovie: función para comprar una película.
+// Resultado: Renderiza las películas alquiladas y compradas con la opción de eliminarlas.
+// ==============================================================================================
+// Ejemplo de uso: <ShoppingCart />
+// ==============================================================================================
+
 import React, { useContext } from 'react';
 import { ShoppingCartContext } from '../context/ShoppingCartProvider';
 import { Row, Col, Button } from 'react-bootstrap';
