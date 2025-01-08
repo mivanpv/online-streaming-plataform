@@ -5,38 +5,45 @@ html, body, #root, .App {
   flex-direction: column;
 }
 
+/* General Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* App Component */
 .App {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
-.App-logo {
+
+.App__logo {
   height: 40vmin;
   pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  .App__logo {
+    animation: App__logo-spin infinite 20s linear;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
+@keyframes App__logo-spin {
   from {
     transform: rotate(0deg);
   }
@@ -45,25 +52,101 @@ html, body, #root, .App {
   }
 }
 
-.sidebar-menu {
+/* Navbar Styles */
+.Navbar {
+  background-color: #343a40;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.Navbar__brand {
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.Navbar__collapse {
+  justify-content: flex-end;
+}
+
+/* Sidebar Styles */
+.SidebarMenu {
   width: 250px;
   position: fixed;
   top: 0;
   left: 0;
   height: 100%;
-  background-color: #f8f9fa;
+  background-color: #fff;
   padding: 20px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #ddd;
 }
 
-.content {
-  flex: 1;
+.SidebarMenu__item {
+  border: none;
+  padding: 10px 15px;
+  font-size: 1rem;
+  color: #333;
 }
 
-footer {
+.SidebarMenu__item:hover {
+  background-color: #f4f4f9;
+}
+
+/* Content Styles */
+.Content {
+  margin-left: 250px;
+  padding: 20px;
+}
+
+/* Card Styles */
+.Card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.Card__img {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.Card__body {
+  padding: 20px;
+}
+
+.Card__title {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+.Card__text {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Button Styles */
+.Button {
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.Button:hover {
+  background-color: #ddd;
+}
+
+/* Footer Styles */
+.Footer {
   background-color: #343a40;
   color: white;
   padding: 1rem 0;
   text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 

@@ -5,17 +5,17 @@ import { FaHome, FaSearch, FaShoppingCart } from 'react-icons/fa';
 
 function SidebarMenu() {
   return (
-    <div className="sidebar-menu">
+    <div className="SidebarMenu">
       <ListGroup>
-        <ListGroup.Item action as={Link} to="/">
+        <ListGroup.Item action as={Link} to="/" className="SidebarMenu__item">
           <FaHome style={{ marginRight: '10px' }} />
           Inicio
         </ListGroup.Item>
-        <ListGroup.Item action as={Link} to="/buscar-peliculas">
+        <ListGroup.Item action as={Link} to="/buscar-peliculas" className="SidebarMenu__item">
           <FaSearch style={{ marginRight: '10px' }} />
           Buscar películas
         </ListGroup.Item>
-        <ListGroup.Item action as={Link} to="/carrito-de-compras">
+        <ListGroup.Item action as={Link} to="/carrito-de-compras" className="SidebarMenu__item">
           <FaShoppingCart style={{ marginRight: '10px' }} />
           Carrito de compras
         </ListGroup.Item>

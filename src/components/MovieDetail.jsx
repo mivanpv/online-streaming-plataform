@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Card, Container, Row, Col } from 'react-bootstrap';
 import { ShoppingCartContext } from '../context/ShoppingCartProvider';
 import ActionButtons from './ActionButtons';
+import { fetchMovieDetails } from '../services/movieService';
 
 function MovieDetail() {
   const { imdbID } = useParams();
@@ -10,14 +11,12 @@ function MovieDetail() {
   const { rentedMovies, boughtMovies, rentMovie, buyMovie } = useContext(ShoppingCartContext);
 
   useEffect(() => {
-    const fetchMovie = async () => {
-      const apiKey = process.env.REACT_APP_OMDB_API_KEY; // Reemplaza con tu clave API de OMDb
-      const response = await fetch(`https://www.omdbapi.com/?i=${imdbID}&apikey=${apiKey}`);
-      const data = await response.json();
+    const getMovieDetails = async () => {
+      const data = await fetchMovieDetails(imdbID);
       setMovie(data);
     };
 
-    fetchMovie();
+    getMovieDetails();
   }, [imdbID]);
 
   const isRented = rentedMovies.some(m => m.imdbID === imdbID);

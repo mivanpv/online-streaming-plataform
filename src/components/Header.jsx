@@ -5,13 +5,13 @@ import MovieStats from './MovieStats';
 
 function Header() {
   return (
-    <Navbar bg="dark" variant="dark">
+    <Navbar bg="dark" variant="dark"  className="Navbar">
       <Container>
-        <Navbar.Brand as={Link} to="/">
+        <Navbar.Brand as={Link} to="/"  className="Navbar__brand">
           Online Streaming Platform
           <MovieStats />
         </Navbar.Brand>
-        <Navbar.Collapse className="justify-content-end">
+        <Navbar.Collapse className="Navbar__collapse">
          
         </Navbar.Collapse>
       </Container>

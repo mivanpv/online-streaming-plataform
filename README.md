@@ -1,7 +1,7 @@
 # Ver el proyecto online
 https://online-streaming-plataform.vercel.app/
 
-#icons
+# icons
 https://react-icons.github.io/react-icons/icons/fa/
 
 # Getting Started with Create React App

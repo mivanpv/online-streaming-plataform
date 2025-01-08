@@ -2,38 +2,21 @@ import React, { useEffect, useState, useContext } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import MovieCard from './MovieCard';
 import { ShoppingCartContext } from '../context/ShoppingCartProvider';
+import { fetchPopularMovies } from '../services/movieService';
 
 function WelcomeScreen() {
   const [popularMovies, setPopularMovies] = useState([]);
   const { rentedMovies, boughtMovies, rentMovie, buyMovie } = useContext(ShoppingCartContext);
 
   useEffect(() => {
-    const fetchPopularMovies = async () => {
-      const tmdbApiKey = process.env.REACT_APP_TMDB_API_KEY; // Reemplaza con tu clave API de TMDb
-      const omdbApiKey = process.env.REACT_APP_OMDB_API_KEY; // Reemplaza con tu clave API de OMDb
-
-      // Obtener películas populares de TMDb
-      const tmdbResponse = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${tmdbApiKey}&language=es-ES&page=1`);
-      const tmdbData = await tmdbResponse.json();
-      const tmdbMovies = tmdbData.results;
-
-      // Obtener detalles de las películas de OMDb
-      let movies = [];
-      for (const tmdbMovie of tmdbMovies) {
-        const omdbResponse = await fetch(`https://www.omdbapi.com/?t=${tmdbMovie.title}&apikey=${omdbApiKey}`);
-        const omdbData = await omdbResponse.json();
-        if (omdbData.Response === 'True') {
-          movies.push(omdbData);
-        }
-      }
-
+    const getPopularMovies = async () => {
+      const movies = await fetchPopularMovies();
       setPopularMovies(movies);
     };
 
-    
-    fetchPopularMovies();
+    getPopularMovies();
   }, []);
-
+  
   return (
     <div>
       <h2>Películas Populares</h2>

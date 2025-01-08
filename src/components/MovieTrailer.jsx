@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Container, Card } from 'react-bootstrap';
 import { ShoppingCartContext } from '../context/ShoppingCartProvider';
 import ActionButtons from './ActionButtons';
+import { fetchMovieTrailer, fetchMovieDetails } from '../services/movieService';
 
 function MovieTrailer() {
   const { imdbID } = useParams();
@@ -11,24 +12,15 @@ function MovieTrailer() {
   const { rentedMovies, boughtMovies, rentMovie, buyMovie } = useContext(ShoppingCartContext);
 
   useEffect(() => {
-    const fetchTrailer = async () => {
-      const apiKey = process.env.REACT_APP_YOUTUBE_API_KEY; // Reemplaza con tu clave API de YouTube
-      const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${imdbID}+trailer&type=video&key=${apiKey}`);
-      const data = await response.json();
-      if (data.items && data.items.length > 0) {
-        setTrailerUrl(`https://www.youtube.com/embed/${data.items[0].id.videoId}`);
-      }
+    const getMovieData = async () => {
+      const trailer = await fetchMovieTrailer(imdbID);
+      setTrailerUrl(trailer);
+
+      const movieDetails = await fetchMovieDetails(imdbID);
+      setMovie(movieDetails);
     };
 
-    const fetchMovie = async () => {
-      const apiKey = process.env.REACT_APP_OMDB_API_KEY; // Reemplaza con tu clave API de OMDb
-      const response = await fetch(`https://www.omdbapi.com/?i=${imdbID}&apikey=${apiKey}`);
-      const data = await response.json();
-      setMovie(data);
-    };
-
-    fetchTrailer();
-    fetchMovie();
+    getMovieData();
   }, [imdbID]);
 
   const isRented = rentedMovies.some(m => m.imdbID === imdbID);

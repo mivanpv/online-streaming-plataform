@@ -3,6 +3,7 @@ import { Form, FormControl, Button, Row, Col } from 'react-bootstrap';
 import { FaSearch } from 'react-icons/fa';
 import MovieCard from './MovieCard';
 import { ShoppingCartContext } from '../context/ShoppingCartProvider';
+import { searchMovies } from '../services/movieService';
 
 function SearchBar() {
   const [search, setSearch] = useState('');
@@ -19,23 +20,20 @@ function SearchBar() {
     return regex.test(input);
   };
 
-  const searchMovies = async () => {
-
+  const handleSearch = async () => {
     if (!validateInput(search)) {
-      alert('Entrada inválida. Por favor, ingrese solo letras y números.');
+      alert('Entrada inválida. Por favor, ingrese solo letras, números y espacios.');
       return;
     }
 
-    const omdbApiKey = process.env.REACT_APP_OMDB_API_KEY; // Reemplaza con tu clave API de OMDb
-    const response = await fetch(`https://www.omdbapi.com/?s=${search}&apikey=${omdbApiKey}`);
-    const data = await response.json();
-    setResults(data.Search || []);
+    const movies = await searchMovies(search);
+    setResults(movies);
   };
 
   return (
     <div>
       <h2>Busqueda de pelicula</h2>
-      <Form className="d-flex align-items-center mb-3" onSubmit={(e) => { e.preventDefault(); searchMovies(); }}>
+      <Form className="d-flex align-items-center mb-3" onSubmit={(e) => { e.preventDefault(); handleSearch(); }}>
         <FormControl
           type="search"
           placeholder="Buscar"
@@ -44,7 +42,7 @@ function SearchBar() {
           value={search}
           onChange={textchange}
         />
-        <Button variant="outline-success" onClick={searchMovies}>
+        <Button variant="outline-success" onClick={handleSearch}>
           <FaSearch />
         </Button>
       </Form>
