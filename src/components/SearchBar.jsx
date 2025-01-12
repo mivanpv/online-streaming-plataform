@@ -27,7 +27,7 @@ function SearchBar() {
   const validateInput = (input) => {
     // Validar que la entrada no esté vacía y no contenga caracteres especiales peligrosos
     const regex = /^[a-zA-Z0-9\sñÑáéíóúÁÉÍÓÚ]+$/;
-    return regex.test(input);
+    return regex.test(input) && input.length <= 50;
   };
 
   const handleSearch = async () => {
