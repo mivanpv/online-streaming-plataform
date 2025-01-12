@@ -22,7 +22,7 @@ function Header() {
           <MovieStats />
         </Navbar.Brand>
         <Navbar.Collapse className="Navbar__collapse">
-         
+  
         </Navbar.Collapse>
       </Container>
     </Navbar>

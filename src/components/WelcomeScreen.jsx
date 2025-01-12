@@ -32,7 +32,7 @@ function WelcomeScreen() {
       <Row>
         {popularMovies.length > 0 ? (
           popularMovies.map((movie) => (
-            <Col key={movie.imdbID} md={4}>
+            <Col key={movie.imdbID} md={3}>
               <MovieCard 
                 movie={movie} 
                 onRent={rentMovie} 
