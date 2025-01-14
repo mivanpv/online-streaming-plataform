@@ -4,6 +4,8 @@
 // Ejemplo de uso: <NotFound />
 // ==============================================================================================
 
+// Hooks utilizados: Ninguno
+
 import React from 'react';
 
 function NotFound() {

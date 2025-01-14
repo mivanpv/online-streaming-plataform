@@ -9,6 +9,7 @@
 // Ejemplo de uso: <SidebarMenu />
 // ==============================================================================================
 
+// // Hooks utilizados: Ninguno
 import React from 'react';
 import { ListGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';

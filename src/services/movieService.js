@@ -8,6 +8,7 @@
 // Para obtener una clave de API de OMDb, regístrate en http://www.omdbapi.com/.
 // Para obtener una clave de API de YouTube, sigue las instrucciones en https://developers.google.com/youtube/v3/getting-started.
 
+// Variables de entorno
 const tmdbApiKey = process.env.REACT_APP_TMDB_API_KEY; // Reemplaza con tu clave API de TMDb
 const omdbApiKey = process.env.REACT_APP_OMDB_API_KEY; // Reemplaza con tu clave API de OMDb
 const youtubeApiKey = process.env.REACT_APP_YOUTUBE_API_KEY; // Reemplaza con tu clave API de YouTube

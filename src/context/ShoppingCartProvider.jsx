@@ -3,6 +3,7 @@
 // El provider ShoppingCartProvider envuelve la aplicación y provee el contexto a todos los componentes que lo necesiten.
 // Para usar el contexto en un componente, se importa el contexto y se utiliza el hook useContext para acceder a los valores del contexto.
 
+// Hooks utilizados: createContext, useState
 import React, { createContext, useState } from 'react';
 
 export const ShoppingCartContext = createContext();

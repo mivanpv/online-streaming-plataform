@@ -8,6 +8,8 @@
 // Ejemplo de uso: <MovieStats />
 // ==============================================================================================
 
+// Hooks utilizados: useContext
+
 import React, { useContext } from 'react';
 import { FaDollarSign, FaRegCalendarAlt } from 'react-icons/fa';
 import { ShoppingCartContext } from '../context/ShoppingCartProvider';

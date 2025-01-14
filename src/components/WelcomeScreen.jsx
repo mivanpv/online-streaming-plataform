@@ -7,6 +7,8 @@
 // Ejemplo de uso: <WelcomeScreen />
 // ==============================================================================================
 
+// Hooks utilizados: useEffect, useState, useContext
+
 import React, { useEffect, useState, useContext } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import MovieCard from './MovieCard';

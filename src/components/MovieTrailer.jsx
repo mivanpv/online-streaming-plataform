@@ -6,6 +6,9 @@
 // ==============================================================================================
 // Ejemplo de uso: <MovieTrailer />
 // ==============================================================================================
+
+// Hooks utilizados: useContext, useParams
+
 import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Card } from 'react-bootstrap';

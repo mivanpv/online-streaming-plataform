@@ -12,6 +12,8 @@
 // Ejemplo de uso: <ShoppingCart />
 // ==============================================================================================
 
+// Hooks utilizados: useContext
+
 import React, { useContext } from 'react';
 import { ShoppingCartContext } from '../context/ShoppingCartProvider';
 import { Row, Col, Button } from 'react-bootstrap';

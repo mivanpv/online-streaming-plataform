@@ -6,6 +6,10 @@
 // ==============================================================================================
 // Ejemplo de uso: <MovieDetail />
 // ==============================================================================================
+
+// Hooks utilizados: useEffect, useState, useContext, 
+// useParams: hook de React Router que permite acceder a los parámetros de la URL.
+
 import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { Card, Container, Row, Col } from 'react-bootstrap';

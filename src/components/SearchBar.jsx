@@ -8,6 +8,8 @@
 // Ejemplo de uso: <SearchBar />
 // ==============================================================================================
 
+// Hooks utilizados: useState, useContext
+
 import React, { useState, useContext } from 'react';
 import { Form, FormControl, Button, Row, Col } from 'react-bootstrap';
 import { FaSearch } from 'react-icons/fa';
