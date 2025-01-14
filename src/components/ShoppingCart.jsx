@@ -49,7 +49,7 @@ function ShoppingCart() {
       <Row>
         {boughtMovies.length > 0 ? (
           boughtMovies.map((movie) => (
-            <Col key={movie.imdbID} md={4}>
+            <Col key={movie.imdbID} md={3}>
               <MovieCard 
                 movie={movie} 
                 onRent={rentMovie} 
