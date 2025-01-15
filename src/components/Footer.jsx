@@ -17,7 +17,7 @@ function Footer() {
       <Container>
         <Row>
           <Col>
-            <p>&copy; {new Date().getFullYear()} Online Streaming Platform. Todos los derechos reservados.</p>
+            <p>&copy; {new Date().getFullYear()} Online Streaming Platform. Todos los derechos reservados. Make with love by MIPV</p>
           </Col>
         </Row>
       </Container>
