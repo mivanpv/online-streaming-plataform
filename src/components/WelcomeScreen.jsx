@@ -22,6 +22,9 @@ function WelcomeScreen() {
   useEffect(() => {
     const getPopularMovies = async () => {
       const movies = await fetchPopularMovies();
+
+console.log(movies);
+
       setPopularMovies(movies);
     };
 

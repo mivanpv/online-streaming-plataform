@@ -25,7 +25,7 @@ function MovieDetail() {
   useEffect(() => {
     const getMovieDetails = async () => {
       const data = await fetchMovieDetails(imdbID);
-      setMovie(data);
+      setMovie(data[0]);
     };
 
     getMovieDetails();

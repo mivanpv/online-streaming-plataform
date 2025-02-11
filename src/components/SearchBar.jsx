@@ -15,7 +15,7 @@ import { Form, FormControl, Button, Row, Col } from 'react-bootstrap';
 import { FaSearch } from 'react-icons/fa';
 import MovieCard from './MovieCard';
 import { ShoppingCartContext } from '../context/ShoppingCartProvider';
-import { searchMovies } from '../services/movieService';
+import { searchMoviesByTitle } from '../services/movieService';
 
 function SearchBar() {
   const [search, setSearch] = useState('');
@@ -38,7 +38,7 @@ function SearchBar() {
       return;
     }
 
-    const movies = await searchMovies(search);
+    const movies = await searchMoviesByTitle(search);
     setResults(movies);
   };
 

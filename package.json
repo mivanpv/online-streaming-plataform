@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@elastic/elasticsearch": "^8.17.0",
     "@vercel/speed-insights": "^1.1.0",
     "bootstrap": "^5.3.3",
     "cra-template": "1.2.0",
+    "hpagent": "^1.2.0",
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.7",
     "react-dom": "^19.0.0",
@@ -39,6 +41,9 @@
     ]
   },
   "devDependencies": {
-    "@types/react": "^19.0.2"
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
+    "@types/react": "^19.0.2",
+    "jest": "^27.5.1"
   }
 }

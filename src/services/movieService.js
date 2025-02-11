@@ -13,18 +13,21 @@ const tmdbApiKey = process.env.REACT_APP_TMDB_API_KEY; // Reemplaza con tu clave
 const omdbApiKey = process.env.REACT_APP_OMDB_API_KEY; // Reemplaza con tu clave API de OMDb
 const youtubeApiKey = process.env.REACT_APP_YOUTUBE_API_KEY; // Reemplaza con tu clave API de YouTube
 
+const cloudMoviesGateway = 'http://localhost:8762/search-movies';
+
 export const fetchPopularMovies = async () => {
   // Obtener películas populares de TMDb
   const tmdbResponse = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${tmdbApiKey}&language=es-ES&page=1`);
   const tmdbData = await tmdbResponse.json();
   const tmdbMovies = tmdbData.results;
-
+  console.log(tmdbMovies);  
   // Obtener detalles de las películas de OMDb
   let movies = [];
   for (const tmdbMovie of tmdbMovies) {
-    const omdbResponse = await fetch(`https://www.omdbapi.com/?t=${tmdbMovie.title}&apikey=${omdbApiKey}`);
+    const omdbResponse = await fetch(`https://www.omdbapi.com/?t=${tmdbMovie.original_title}&apikey=${omdbApiKey}`);
     const omdbData = await omdbResponse.json();
     if (omdbData.Response === 'True') {
+      saveMovieElasticSearch(omdbData);
       movies.push(omdbData);
     }
   }
@@ -32,10 +35,40 @@ export const fetchPopularMovies = async () => {
   return movies;
 };
 
-export const fetchMovieDetails = async (imdbID) => {
-  const response = await fetch(`https://www.omdbapi.com/?i=${imdbID}&apikey=${omdbApiKey}`);
-  const data = await response.json();
-  return data;
+export const saveMovieElasticSearch = async (movieimdb) => {
+  // Validar si existe en elasticsearch y si no existe, insertar
+    let query = JSON.stringify({
+      query: {
+        term: {
+          Title: movieimdb.Title.toLowerCase()
+        }
+      }
+    })
+
+  // console.log(query);
+  // const response = await fetch(`${elasticsearchUrl}/peliculas/_search`, {
+  // method: 'POST',
+  // headers: {
+  //   'Content-Type': 'application/json',
+  //   'Authorization': elasticsearchAuth
+  // },
+  // body: query
+  // });
+
+  // const data = await response.json();
+
+  // if (data.hits.total.value === 0) {
+  //  const result = await fetch(`${elasticsearchUrl}/peliculas/_doc/${movieimdb.imdbID}`, {
+  //    method: 'POST',
+  //    headers: {
+  //      'Content-Type': 'application/json',
+  //      'Authorization': elasticsearchAuth
+  //    },
+  //    body: JSON.stringify(movieimdb)
+  //  });
+
+  //  const dataPost = await result.json();
+  //}
 };
 
 export const fetchMovieTrailer = async (imdbID) => {
@@ -47,8 +80,27 @@ export const fetchMovieTrailer = async (imdbID) => {
   return null;
 };
 
-export const searchMovies = async (query) => {
-  const response = await fetch(`https://www.omdbapi.com/?s=${encodeURIComponent(query)}&apikey=${omdbApiKey}`);
+export const searchMoviesByTitle = async (title) => {
+  const response = await fetch(`${cloudMoviesGateway}/peliculas/_search?query=${title}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  });
+
   const data = await response.json();
-  return data.Search || [];
+  return data.hits.hits.map(hit => hit._source);
+};
+
+export const fetchMovieDetails = async (imdbID) => {
+
+  const response = await fetch(`${cloudMoviesGateway}/peliculas/_searchByimdbID?query=${imdbID}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  });
+  const data = await response.json();
+  return data.hits.hits.map(hit => hit._source);
+
 };

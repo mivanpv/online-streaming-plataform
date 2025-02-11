@@ -15,7 +15,7 @@ const useMovieData = (imdbID) => {
       setTrailerUrl(trailer);
 
       const movieDetails = await fetchMovieDetails(imdbID);
-      setMovie(movieDetails);
+      setMovie(movieDetails[0]);
     };
 
     getMovieData();
