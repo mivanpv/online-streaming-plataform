@@ -13,7 +13,7 @@ const tmdbApiKey = process.env.REACT_APP_TMDB_API_KEY; // Reemplaza con tu clave
 const omdbApiKey = process.env.REACT_APP_OMDB_API_KEY; // Reemplaza con tu clave API de OMDb
 const youtubeApiKey = process.env.REACT_APP_YOUTUBE_API_KEY; // Reemplaza con tu clave API de YouTube
 
-const cloudMoviesGateway = 'http://192.168.100.53:8762/search-movies/search-movies';
+const cloudMoviesGateway = 'https://gateway-production-70b7.up.railway.app/search-movies/search-movies';
 
 export const fetchPopularMovies = async () => {
   // Obtener películas populares de TMDb
